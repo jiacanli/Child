@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beta.crop.dao.ProvinceMapper">
+  <resultMap id="BaseResultMap" type="com.beta.crop.model.Province">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+  </resultMap>
+  
+  <resultMap id="ProvinceResultMap" type="com.beta.crop.model.Province">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />    
+    <collection property="citys" ofType="com.beta.crop.model.City" >
+         <result column="id" jdbcType="INTEGER" property="id" />
+         <result column="city_code" property="cityCode"/>
+         <result column="city_name" property="cityName"/>
+         <result column="reference_province_code" property="referenceProvinceCode"/>
+         <collection property="towns" ofType="com.beta.crop.model.Town">
+             <result column="id" jdbcType="INTEGER" property="id" />
+         	 <result column="town_code" property="townCode"/>
+         	 <result column="town_name" property="townName"/>
+         	 <result column="reference_city_code" property="referenceCityCode"/>             
+         </collection>       
+    </collection>
+  </resultMap>
+    
+  <sql id="Base_Column_List">
+    id, code, province_name
+  </sql>
+
+  
+  <select id ="selectAllProvince" resultMap = "ProvinceResultMap">
+SELECT
+	province.id,
+	province.`code`,
+	province.province_name,
+	city.id,
+	city.city_code,
+	city.city_name,
+	city.reference_province_code,
+	town.id,
+	town.town_code,
+	town.town_name,
+	town.reference_city_code
+FROM
+	province,
+	city,
+	town
+WHERE
+	province.`code` = city.reference_province_code
+AND city.city_code = town.reference_city_code      
+      
+  </select>
+</mapper>

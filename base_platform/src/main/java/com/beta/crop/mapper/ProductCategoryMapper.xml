@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beta.crop.dao.ProductCategoryMapper">
+  <resultMap id="BaseResultMap" type="com.beta.crop.model.ProductCategory">
+    <id column="l3_code" jdbcType="VARCHAR" property="l3Code" />
+    <result column="l1_code" jdbcType="VARCHAR" property="l1Code" />
+    <result column="l1_name" jdbcType="VARCHAR" property="l1Name" />
+    <result column="l2_code" jdbcType="VARCHAR" property="l2Code" />
+    <result column="l2_name" jdbcType="VARCHAR" property="l2Name" />
+    <result column="l3_name" jdbcType="VARCHAR" property="l3Name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    l3_code, l1_code, l1_name, l2_code, l2_name, l3_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_category
+    where l3_code = #{l3Code,jdbcType=VARCHAR}
+  </select>
+</mapper>

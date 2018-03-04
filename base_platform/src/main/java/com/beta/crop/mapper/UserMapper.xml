@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beta.crop.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.beta.crop.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="login_type" jdbcType="INTEGER" property="loginType" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="wechat_token" jdbcType="VARCHAR" property="wechatToken" />
+    <result column="qq_token" jdbcType="VARCHAR" property="qqToken" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="town" jdbcType="VARCHAR" property="town" />
+    <result column="imgid" jdbcType="VARCHAR" property="imgid" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="brithday" jdbcType="DATE" property="brithday" />
+    <result column="tenantid" jdbcType="BIGINT" property="tenantid" />
+    <result column="login_code" jdbcType="VARCHAR" property="loginCode" />
+    <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="is_locked" jdbcType="INTEGER" property="isLocked" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type, status, login_type, phone, wechat_token, qq_token, email, province, 
+    city, town, imgid, card_id, brithday, tenantid, login_code, login_password, is_locked, 
+    user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+</mapper>

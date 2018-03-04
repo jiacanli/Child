@@ -60,32 +60,29 @@
 	  <property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<tx:annotation-driven proxy-target-class="false" transaction-manager="appTransactionManager" />
-	
 	<!-- myBatis文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath*:com/beta/crop/**/*.xml" />
+		<property name="mapperLocations" value="classpath*:com/beta/crop/mapper/*.xml" />
 	</bean>
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.beta.mss.corpus.**.dao" />
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-	</bean> -->
-	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+
+	
+	<bean id ="tkMapperScanner" class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.beta.crop.dao"/>
         <!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
         <property name="markerInterface" value="com.beta.crop.dao.BaseMapper"/>
-        <!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口-->
-        <!-- <property name="properties">
-            <value>
-                mappers=tk.mybatis.mapper.common.Mapper
-            </value>
-        </property> -->
-        
+        <!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口-->        
     </bean>
+    
+   	<bean id="baseMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.beta.crop.**.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean> 
+
+
 </beans>

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 <!-- 数据库驱动-->
-	<classPathEntry	location="C:/Users/gdkj/.m2/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar"/>
+	<classPathEntry	location="C:/Users/lijiacan/.m2/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar"/>
 	<context id="DB2Tables"	targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressDate" value="true"/>
@@ -12,7 +12,7 @@
 			<property name="suppressAllComments" value="true"/>
 		</commentGenerator>
 		<!--数据库链接URL，用户名、密码 -->
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3308/corpus?characterEncoding=utf8" userId="root" password="">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.8.172:3308/crop?characterEncoding=utf8" userId="root" password="">
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false"/>
@@ -33,9 +33,63 @@
 		</javaClientGenerator>
 		<!-- 要生成哪些表-->
 		
+		
 		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
 			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
-			   tableName="test" domainObjectName="Test"></table>
+			   tableName="company" domainObjectName="Company"></table>
+
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="company_industry" domainObjectName="CompanyIndustry"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="company_scale" domainObjectName="CompanyScale"></table>
+
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="favorite_product" domainObjectName="FavoriteProduct"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="feature_detail" domainObjectName="FeatureDetail"></table>
+
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="product" domainObjectName="Product"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="product_category" domainObjectName="ProductCategory"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="product_feature" domainObjectName="ProductFeature"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="product_service" domainObjectName="ProductService"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="product_tag" domainObjectName="ProductTag"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="recent_view" domainObjectName="RecentView"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="service_detail" domainObjectName="SeriveDetail"></table>
+		
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="tag_detail" domainObjectName="TagDetail"></table>
+				
+		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false"  enableDeleteByExample="false"
+			   enableInsert = "false" enableSelectByPrimaryKey = "true" enableUpdateByPrimaryKey ="false" enableDeleteByPrimaryKey ="false"
+			   tableName="user" domainObjectName="User"></table>
+		
 
 <!-- 		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false" enableDeleteByExample="false" tableName="robot_platform_audio_record" domainObjectName="AudioRecord"></table> -->
 <!-- 		<table enableUpdateByExample ="false" enableCountByExample ="false" selectByExampleQueryId="false" enableSelectByExample="false" enableDeleteByExample="false" tableName="robot_platform_auth" domainObjectName="Auth"></table> -->
