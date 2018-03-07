@@ -22,16 +22,14 @@
     <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
     <result column="is_locked" jdbcType="INTEGER" property="isLocked" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
+     <result column="last_device_id" jdbcType="VARCHAR" property="lastDeviceId" />
+     <result column="last_sign_in_time" jdbcType="TIMESTAMP" property="lastSignInTime" />
+     <result column="last_sign_in_IP" jdbcType="VARCHAR" property="lastSignInIp" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, type, status, login_type, phone, wechat_token, qq_token, email, province, 
     city, town, imgid, card_id, brithday, tenantid, login_code, login_password, is_locked, 
-    user_id
+    user_id,last_device_id,last_sign_in_time,last_sign_in_IP
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where id = #{id,jdbcType=BIGINT}
-  </select>
+
 </mapper>

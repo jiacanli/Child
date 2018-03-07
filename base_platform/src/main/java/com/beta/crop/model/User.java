@@ -42,8 +42,38 @@ public class User {
     private Integer isLocked;
 
     private String userId;
+    
+    private String lastDeviceId;
+    
+    private Date lastSignInTime;
+    
+    private String lastSignInIp;
 
-    public Long getId() {
+    public String getLastDeviceId() {
+		return lastDeviceId;
+	}
+
+	public void setLastDeviceId(String lastDeviceId) {
+		this.lastDeviceId = lastDeviceId;
+	}
+
+	public Date getLastSignInTime() {
+		return lastSignInTime;
+	}
+
+	public void setLastSignInTime(Date lastSignInTime) {
+		this.lastSignInTime = lastSignInTime;
+	}
+
+	public String getLastSignInIp() {
+		return lastSignInIp;
+	}
+
+	public void setLastSignInIp(String lastSignInIp) {
+		this.lastSignInIp = lastSignInIp;
+	}
+
+	public Long getId() {
         return id;
     }
 

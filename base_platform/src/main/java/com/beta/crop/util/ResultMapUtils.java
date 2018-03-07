@@ -47,6 +47,14 @@ public class ResultMapUtils {
 		return dm;
 	}
 	
+	public static DataModel<Object> getResultMap(String msg,Object result){
+		DataModel<Object> dm = new DataModel<Object>();
+		dm.setCode(SUCCESS_CODE);
+		dm.setMessage(msg);
+		dm.setData(result);
+		return dm;
+	}
+	
 	/**
 	 * 方法有误时调用的返回值方法
 	 * @param errorCode    错误码
@@ -57,6 +65,7 @@ public class ResultMapUtils {
 		DataModel<Object> dm = new DataModel<Object>();
 		dm.setCode(errorCode);
 		dm.setMessage(errorMsg);
+		dm.setData("");
 		return dm;
 	}
 	
