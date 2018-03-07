@@ -75,5 +75,6 @@
 	</bean>
 	
 	<import resource="classpath:spring-mybatis.xml" />
+
 	
 </beans>
