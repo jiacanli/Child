@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 import com.beta.crop.model.DataModel;
 import com.beta.crop.model.ParameterPrototype;
@@ -18,25 +19,35 @@ public class UserController {
 	public UserController() {
 		// TODO Auto-generated constructor stub
 	}
-	@RequestMapping("/signup")
+	@RequestMapping("/service")
 	public DataModel<Object> singup(ParameterPrototype params) {
-		JSONObject data = new JSONObject(params.getData());
-		boolean result = service.Signup(data);
-		
-		return result==true?ResultMapUtils.getResultMap("注册成功", ""):
-			ResultMapUtils.getFailResultMap("201", "注册失败");
+		int code = Integer.parseInt(params.getCode());
+		switch (code) {
+		case 1:
+			return signin(params);
+		case 2:
+			JSONObject data = new JSONObject(params.getData());
+			boolean result = service.Signup(data);			
+			return result==true?ResultMapUtils.getResultMap("注册成功", ""):
+				ResultMapUtils.getFailResultMap("201", "注册失败");
+		case 3:
+			return signout(params);
+		default:
+			return ResultMapUtils.getFailResultMap("201", "code参数错误");
+		}
+
 		
 	}
-	@RequestMapping("/signin")
-	public DataModel<Object> signin(ParameterPrototype params) {
+	
+	private DataModel<Object> signin(ParameterPrototype params) {
 		JSONObject data = new JSONObject(params.getData());
 		data.put("deviceid", params.getDeviceid());
 		data.put("ip", "_ip");
 		return service.Signin(data);
 	}
 	
-	@RequestMapping("/signout")
-	public DataModel<Object> signout(ParameterPrototype params) {
+	
+	private DataModel<Object> signout(ParameterPrototype params) {
 		return service.Signout(params);
 	}
 
