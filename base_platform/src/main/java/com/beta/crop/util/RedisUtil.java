@@ -1,12 +1,16 @@
 package com.beta.crop.util;
 
 
+import java.util.Properties;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisUtil {
 	private  static JedisPoolConfig config = new JedisPoolConfig();
+//	private static Properties properties = PropertiesFileUtil.LoadProperties("general.properties");
+	private static Properties pUtil = PropertiesFileUtil.LoadProperties("general.properties");
 	private static JedisPool pool;
 	
 	static {
@@ -15,7 +19,7 @@ public class RedisUtil {
         config.setMaxWaitMillis(3000);
         config.setTestOnBorrow(false); 
         
-		pool = new JedisPool(config,"localhost", 6379,30000);
+		pool = new JedisPool(config,pUtil.getProperty("redis_server"), Integer.parseInt(pUtil.getProperty("port")),30000);
 		
 		
 	}

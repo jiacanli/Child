@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.beta.crop.dao.UserMapper;
 import com.beta.crop.model.DataModel;
 import com.beta.crop.model.ParameterPrototype;
@@ -65,15 +66,13 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		}
 		
 		String login_token = UUID.randomUUID().toString();
-		Map<String ,String> oj = new HashMap<String, String>(); 
 		String user_josn = net.sf.json.JSONObject.fromObject(user).toString();
-		
-		oj.put("user", user_josn);
-		oj.put("token", login_token);
+		Map<String, Object> map = (Map<String, Object>) JSON.parse(user_josn);
+		map.put("token", login_token);
 		redis_instance.set(user.getUserId(), login_token);
 		redis_instance.expire(user.getUserId(), 3600*24*30);
 		
-		return ResultMapUtils.getResultMap("登录成功", oj);
+		return ResultMapUtils.getResultMap("登录成功", map);
 	}
 
 	public DataModel<Object> Signout(ParameterPrototype params) {

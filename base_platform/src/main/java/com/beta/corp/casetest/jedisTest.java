@@ -15,7 +15,7 @@ public class jedisTest {
 		JedisPoolConfig jconfig = new JedisPoolConfig();
 		JedisPool jpool = new JedisPool(jconfig,"localhost",6379,3000,"123456");
 		Jedis instance  = jpool.getResource();
-		instance.set("test_Key", "test_Value");
+		instance.set("test_Key", "test_Value"); 
 
 		
 		

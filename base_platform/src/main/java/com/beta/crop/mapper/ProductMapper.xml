@@ -15,7 +15,7 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="product_price" jdbcType="DOUBLE" property="productPrice" />
-    <result column="is_delivery_free" jdbcType="TINYINT" property="isDeliveryFree" />
+    <result column="is_delivery_free" jdbcType="INTEGER" property="isDeliveryFree" />
   </resultMap>
   <sql id="Base_Column_List">
     id, product_id, product_name, l3_code, min_unit, single_factor, creat_path, img_id, 

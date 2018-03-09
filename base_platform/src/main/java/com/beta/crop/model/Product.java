@@ -29,7 +29,7 @@ public class Product {
 
     private Double productPrice;
 
-    private Byte isDeliveryFree;
+    private int isDeliveryFree;
 
     public Long getId() {
         return id;
@@ -135,11 +135,11 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public Byte getIsDeliveryFree() {
+    public int getIsDeliveryFree() {
         return isDeliveryFree;
     }
 
-    public void setIsDeliveryFree(Byte isDeliveryFree) {
+    public void setIsDeliveryFree(int isDeliveryFree) {
         this.isDeliveryFree = isDeliveryFree;
     }
 }
