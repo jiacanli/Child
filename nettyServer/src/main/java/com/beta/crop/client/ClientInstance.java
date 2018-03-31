@@ -37,11 +37,7 @@ public class ClientInstance {
         b.handler(new ChannelInitializer<Channel>() {  
             @Override  
             protected void initChannel(Channel ch) throws Exception {  
-                ChannelPipeline pipeline = ch.pipeline();  
-//                pipeline.addLast("frameDecoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));  
-//                pipeline.addLast("frameEncoder", new LengthFieldPrepender(4));  
-//                pipeline.addLast("decoder", new StringDecoder(CharsetUtil.UTF_8));  
-//                pipeline.addLast("encoder", new StringEncoder(CharsetUtil.UTF_8));  
+                ChannelPipeline pipeline = ch.pipeline();    
                 pipeline.addLast("handler", new ClinetHandler());  
             }  
         });  
