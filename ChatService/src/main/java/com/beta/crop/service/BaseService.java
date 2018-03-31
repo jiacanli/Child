@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface BaseService<T> {
-
+	@CacheEvict(value = "redisCacheManager",key = "#enity.getId()")
 	public int delete(T entity);
 	
 	public int delectByExample(Object example);
