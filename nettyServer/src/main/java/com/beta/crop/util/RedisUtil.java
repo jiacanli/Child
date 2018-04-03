@@ -15,7 +15,7 @@ public class RedisUtil {
 	private static JedisPool message_pool;
     private static JedisPool time_pointer_pool;
     private static JedisPoolConfig config = new JedisPoolConfig();
-    private static String HOST = "13.124.243.54";
+    private static String HOST = "localhost";
     static{
     	
         config.setMaxIdle(10); 
@@ -45,6 +45,17 @@ public class RedisUtil {
 		}
 		
 		return null;
+		
+	}
+	
+	public static void releaseToPool(Jedis instance,String type) {
+		if(type.equals(MESSAGE)) {
+			
+		}
+		
+		if(type.equals(MESSAGE_TIME_POINTER)) {
+			
+		}
 		
 	}
 	

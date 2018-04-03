@@ -1,5 +1,8 @@
 package com.beta.crop.server;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -8,12 +11,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.util.CharsetUtil;
 
 public class ServerInstance {
 
@@ -22,6 +21,7 @@ public class ServerInstance {
 	}
 
 //    private static final String IP = "13.125.234.135";  
+	private static Logger log = LoggerFactory.getLogger(ServerInstance.class);
     private static final int PORT = 50051;  
     /** 用于分配处理业务线程的线程组个数 */  
     protected static final int BIZGROUPSIZE = Runtime.getRuntime().availableProcessors() * 2; // 默认  
@@ -67,9 +67,10 @@ public class ServerInstance {
     }  
 	
 	public static void main(String[] args) {
+//		PropertyConfigurator.configure("log4j.properties");
 		try {
 			new ServerInstance().run();
-			System.out.println("server start");
+			log.info("server start ");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

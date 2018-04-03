@@ -20,8 +20,8 @@ public class ClientInstance {
 		// TODO Auto-generated constructor stub
 	}
 	
-//    public static String HOST = "13.124.243.54";  
-    public static String HOST = "localhost";  
+//    public static String HOST = "13.125.245.139";  
+    public static String HOST = "13.125.245.139";  
     public static int PORT = 50051;  
   
 //    public static Bootstrap bootstrap = getBootstrap();  
